@@ -3,25 +3,17 @@ package controllers;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import com.twilio.sdk.verbs.Gather;
 import com.twilio.sdk.verbs.Say;
 import com.twilio.sdk.verbs.TwiMLException;
 import com.twilio.sdk.verbs.TwiMLResponse;
 
-public class Application extends Controller {
-
-   public static Result index() {
+public class FizzBuzz extends Controller {
+   public static Result fizzbuzz(String digits) {
       TwiMLResponse twiml = new TwiMLResponse();
 
       try {
-         Gather gather = new Gather();
-         gather.setMethod("GET");
-         gather.setAction("/fizzbuzz");
-
-         Say say = new Say("Please enter a number to fizz up to");
-         gather.append(say);
-
-         twiml.append(gather);
+         Say say = new Say("You entered the digits " + digits);
+         twiml.append(say);
 
       } catch (TwiMLException e) {
          e.printStackTrace();
@@ -29,6 +21,7 @@ public class Application extends Controller {
 
       response().setContentType("application/xml");
       return ok(twiml.toXML());
+      
    }
 
 }
