@@ -1,7 +1,9 @@
 package controllers;
 
+import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
+import security.RequestVerifier;
 
 import com.twilio.sdk.verbs.Gather;
 import com.twilio.sdk.verbs.Say;
@@ -11,6 +13,12 @@ import com.twilio.sdk.verbs.TwiMLResponse;
 public class Application extends Controller {
 
    public static Result index() {
+      Logger.debug("verifying request");
+      if (!(new RequestVerifier().verifyRequest(request()))) {
+         Logger.debug("unauthorized");
+         return unauthorized();
+      }
+
       TwiMLResponse twiml = new TwiMLResponse();
 
       try {

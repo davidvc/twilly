@@ -3,16 +3,21 @@ package controllers;
 import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
+import security.RequestVerifier;
 
 import com.twilio.sdk.verbs.Say;
 import com.twilio.sdk.verbs.TwiMLException;
 import com.twilio.sdk.verbs.TwiMLResponse;
 
 public class FizzBuzz extends Controller {
+
    public static Result fizzbuzz(String digits) {
-      String signature = request().getHeader("X-Twilio-Signature");
-      Logger.debug("Signature is " + signature);
+      if (!(new RequestVerifier().verifyRequest(request()))) {
+         Logger.debug("not authorized");
+         return unauthorized();
+      }
       
+
       TwiMLResponse twiml = new TwiMLResponse();
 
       try {
