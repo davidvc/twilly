@@ -1,5 +1,6 @@
 package security;
 
+import play.Logger;
 import play.mvc.Http.Request;
 
 import com.twilio.sdk.TwilioUtils;
@@ -17,6 +18,7 @@ public class RequestVerifier {
    }
    public boolean verifyRequest(Request request) {
       String signature = request.getHeader("X-Twilio-Signature");
+      Logger.debug("Signature is " + signature);
       String uri = request.uri();
       
       // Not currently supporting POST params...
