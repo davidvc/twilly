@@ -1,5 +1,6 @@
 package controllers;
 
+import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -9,6 +10,9 @@ import com.twilio.sdk.verbs.TwiMLResponse;
 
 public class FizzBuzz extends Controller {
    public static Result fizzbuzz(String digits) {
+      String signature = request().getHeader("X-Twilio-Signature");
+      Logger.debug("Signature is " + signature);
+      
       TwiMLResponse twiml = new TwiMLResponse();
 
       try {
