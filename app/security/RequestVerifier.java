@@ -20,6 +20,7 @@ public class RequestVerifier {
       String signature = request.getHeader("X-Twilio-Signature");
       Logger.debug("Signature is " + signature);
       String uri = request.uri();
+      Logger.debug("URI is " + uri);
       
       // Not currently supporting POST params...
       return twilioUtils.validateRequest(signature, uri, null);
