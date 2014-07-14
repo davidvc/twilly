@@ -24,7 +24,7 @@ public class Application extends Controller {
       try {
          Gather gather = new Gather();
          gather.setMethod("GET");
-         gather.setAction("/fizzbuzz");
+         gather.setAction("/twilly/fizzbuzz");
 
          Say say = new Say("Please enter a number to fizz up to");
          gather.append(say);
