@@ -20,16 +20,17 @@ public class RequestVerifier {
       String signature = request.getHeader("X-Twilio-Signature");
       
       // Strip off the first slash from the uri
-      // Yes, hardcoded, but 
-
       String uri = request.uri();
       uri = uri.substring(1, uri.length());
+      
+      // Strip off the port number
+      String host = request.host();
+      host = host.substring(0, host.lastIndexOf(":"));
 
-      Logger.debug("request host is " + request.host());
+      Logger.debug("request host is " + host);
       Logger.debug("uri is " + uri);
 
-      String fullURI = "https://" + request.host() + uri;
-      //fullURI = fullURI.substring(0, fullURI.length() - 1);
+      String fullURI = "https://" + host + uri;
 
       Logger.debug("Signature is " + signature);
       Logger.debug("URI is " + fullURI);
