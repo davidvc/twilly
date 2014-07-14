@@ -5,9 +5,6 @@ import play.mvc.Http.Request;
 
 import com.twilio.sdk.TwilioUtils;
 
-import controllers.FizzBuzz;
-import controllers.routes;
-
 public class RequestVerifier {
    private static final String AUTH_TOKEN = "b609955334e78ced687e15a6077672a5";
    
