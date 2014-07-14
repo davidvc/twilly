@@ -28,7 +28,8 @@ public class RequestVerifierTest {
 
    @Test
    public void verifiesRequest() {
-      String uri = "this/is/the/uri";
+      String uri = "this/is/the/uri/";
+      String params = ""
       String signature = "signature";
 
       when(request.getHeader("X-Twilio-Signature")).thenReturn(signature);

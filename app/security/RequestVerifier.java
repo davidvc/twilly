@@ -16,8 +16,9 @@ public class RequestVerifier {
    public RequestVerifier(TwilioUtils twilioUtils) {
       this.twilioUtils = twilioUtils;
    }
-   public boolean verifyRequest(Request request, String fullURI) {
+   public boolean verifyRequest(Request request, String uri) {
       String signature = request.getHeader("X-Twilio-Signature");
+      String fullURI = uri + request.uri();
       Logger.debug("Signature is " + signature);
       Logger.debug("URI is " + fullURI);
       
