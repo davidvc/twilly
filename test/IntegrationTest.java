@@ -15,7 +15,7 @@ public class IntegrationTest {
         running(testServer(8000, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
             public void invoke(TestBrowser browser) {
                 browser.goTo("http://localhost:8000/twilly/fizzbuzz?Digits=7");
-                assertThat(browser.pageSource()).contains("1 2 fizz 4 buzz fizz 7");
+                assertThat(browser.pageSource()).contains("1, 2, fizz, 4, buzz, fizz, 7");
             }
         });
     }

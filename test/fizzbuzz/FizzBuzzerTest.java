@@ -20,13 +20,14 @@ public class FizzBuzzerTest {
                {3, "fizz"},
                {6, "fizz"},
                {7, "7"},
-               {15, "fizz"}, // 3 takes precedence over 5
+               {15, "fizz buzz"}, 
+               {30, "fizz buzz"}, 
                {5, "buzz"},
                {0, "0"},
                {-1, "-1"},
                {-3, "fizz"},
                {-5, "buzz"},
-               {-15, "fizz"},
+               {-15, "fizz buzz"},
       });
    }
    

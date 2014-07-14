@@ -21,14 +21,20 @@ public class FizzBuzzGame {
       }
 
       int number = Integer.parseInt(numberString);
-
+      
       StringBuilder builder = new StringBuilder();
       for (int i = 1 ; i <= number ; i++) {
          builder.append(fizzBuzzer.go(i));
-         builder.append(" ");
+         builder.append(", ");
       }
       
-      return builder.toString().trim();
+      String result = builder.toString();
+
+      if (result.length() == 0) {
+         return result;
+      }
+
+      return result.substring(0, result.length() - 2);
    }
 
 }

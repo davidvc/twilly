@@ -36,9 +36,9 @@ public class FizzBuzzGameTest {
 
    @Test
    public void returnsListOfResults() {
-      when(fizzBuzz.go(anyInt())).thenReturn("1", "fizz", "buzz", "7");
+      when(fizzBuzz.go(anyInt())).thenReturn("1", "fizz buzz", "buzz", "7");
       
-      assertEquals("1 fizz buzz 7", underTest.play("4"));
+      assertEquals("1, fizz buzz, buzz, 7", underTest.play("4"));
    }
 
    @Test
