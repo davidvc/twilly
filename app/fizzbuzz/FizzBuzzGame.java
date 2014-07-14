@@ -1,5 +1,7 @@
 package fizzbuzz;
 
+import play.Logger;
+
 
 public class FizzBuzzGame {
 
@@ -22,7 +24,7 @@ public class FizzBuzzGame {
 
       StringBuilder builder = new StringBuilder();
       for (int i = 1 ; i <= number ; i++) {
-         builder.append(fizzBuzzer.go(number));
+         builder.append(fizzBuzzer.go(i));
          builder.append(" ");
       }
       

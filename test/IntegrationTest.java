@@ -11,11 +11,11 @@ import static org.fluentlenium.core.filter.FilterConstructor.*;
 
 public class IntegrationTest {
     @Test
-    public void dumbTest() {
+    public void fizzBuzzTest() {
         running(testServer(8000, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
             public void invoke(TestBrowser browser) {
-                browser.goTo("http://localhost:8000");
-                assertThat(browser.pageSource()).contains("Please enter a number to fizz up to");
+                browser.goTo("http://localhost:8000/twilly/fizzbuzz?Digits=7");
+                assertThat(browser.pageSource()).contains("1 2 fizz 4 buzz fizz 7");
             }
         });
     }
