@@ -3,8 +3,8 @@
 # ~~~~
 
 # Home page
-GET     /start                      controllers.Application.start()
-GET     /fizzbuzz                   controllers.Application.fizzbuzz(Digits: String)
+GET     /twilly                     controllers.Application.start()
+GET     /twilly/fizzbuzz            controllers.Application.fizzbuzz(Digits: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

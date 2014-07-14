@@ -42,7 +42,7 @@ public class Application extends Controller {
    public static Result fizzbuzz(String digits) {
       if (!(new RequestVerifier().verifyRequest(request(), routes.Application.fizzbuzz(digits).absoluteURL(request())))) {
          Logger.debug("not authorized");
-         return unauthorized();
+         return ok("Hmmmm...");
       }
       
 
