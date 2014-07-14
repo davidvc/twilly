@@ -13,23 +13,15 @@ public class RequestVerifier {
    public RequestVerifier() {
       this(new TwilioUtils(AUTH_TOKEN));
    }
+
    public RequestVerifier(TwilioUtils twilioUtils) {
       this.twilioUtils = twilioUtils;
    }
-   public boolean verifyRequest(Request request, String fullPath) {
+
+   public boolean verifyRequest(Request request) {
       String signature = request.getHeader("X-Twilio-Signature");
       
-      // Strip off the first slash from the uri
-      String uri = request.uri();
-      
-      // Strip off the port number
-      String host = request.host();
-      host = host.substring(0, host.lastIndexOf(":"));
-
-      Logger.debug("request host is " + host);
-      Logger.debug("uri is " + uri);
-
-      String fullURI = "https://" + host + uri;
+      String fullURI = "https://" + request.host() + request.uri();
 
       Logger.debug("Signature is " + signature);
       Logger.debug("URI is " + fullURI);

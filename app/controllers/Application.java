@@ -14,7 +14,7 @@ public class Application extends Controller {
 
    public static Result start() {
       Logger.debug("verifying request");
-      if (!(new RequestVerifier().verifyRequest(request(), routes.Application.start().absoluteURL(request())))) {
+      if (!(new RequestVerifier().verifyRequest(request()))) {
          Logger.debug("unauthorized");
          return unauthorized();
       }
@@ -40,9 +40,9 @@ public class Application extends Controller {
    }
    
    public static Result fizzbuzz(String digits) {
-      if (!(new RequestVerifier().verifyRequest(request(), routes.Application.fizzbuzz(digits).absoluteURL(request())))) {
+      if (!(new RequestVerifier().verifyRequest(request()))) {
          Logger.debug("not authorized");
-         return ok("Hmmmm...");
+         return unauthorized();
       }
       
 
