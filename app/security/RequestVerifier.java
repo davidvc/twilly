@@ -19,12 +19,9 @@ public class RequestVerifier {
    public boolean verifyRequest(Request request, String fullPath) {
       String signature = request.getHeader("X-Twilio-Signature");
       
-      // Strip off the last slash in the uri
-      fullPath = fullPath.substring(0, fullPath.length() - 1);
-      
       // Strip off the first slash from the uri
-      String uri = request.uri().substring(1, fullPath.length());
-      String fullURI = fullPath + uri;
+      // Yes, hardcoded, but 
+      String fullURI = "https://" + request.host() + request.uri();
 
       Logger.debug("Signature is " + signature);
       Logger.debug("URI is " + fullURI);
