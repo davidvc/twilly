@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                  controllers.Application.index()
+GET     /start                      controllers.Application.start()
 GET     /fizzbuzz                   controllers.Application.fizzbuzz(Digits: String)
 
 # Map static resources from the /public folder to the /assets URL path

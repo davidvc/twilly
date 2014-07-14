@@ -12,9 +12,9 @@ import com.twilio.sdk.verbs.TwiMLResponse;
 
 public class Application extends Controller {
 
-   public static Result index() {
+   public static Result start() {
       Logger.debug("verifying request");
-      if (!(new RequestVerifier().verifyRequest(request(), routes.Application.index().absoluteURL(request())))) {
+      if (!(new RequestVerifier().verifyRequest(request(), routes.Application.start().absoluteURL(request())))) {
          Logger.debug("unauthorized");
          return unauthorized();
       }

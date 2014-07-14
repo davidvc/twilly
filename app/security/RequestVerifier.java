@@ -21,7 +21,6 @@ public class RequestVerifier {
       
       // Strip off the first slash from the uri
       String uri = request.uri();
-      uri = uri.substring(1, uri.length());
       
       // Strip off the port number
       String host = request.host();
