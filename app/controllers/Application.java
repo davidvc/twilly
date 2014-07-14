@@ -10,12 +10,12 @@ import com.twilio.sdk.verbs.Say;
 import com.twilio.sdk.verbs.TwiMLException;
 import com.twilio.sdk.verbs.TwiMLResponse;
 
+import fizzbuzz.FizzBuzzGame;
+
 public class Application extends Controller {
 
    public static Result start() {
-      Logger.debug("verifying request");
-      if (!(new RequestVerifier().verifyRequest(request()))) {
-         Logger.debug("unauthorized");
+      if (isUnauthorized()) {
          return unauthorized();
       }
 
@@ -32,28 +32,28 @@ public class Application extends Controller {
          twiml.append(gather);
 
       } catch (TwiMLException e) {
-         e.printStackTrace();
+         Logger.error("Unable to create TWIML response", e);
+         return internalServerError();
       }
 
       response().setContentType("application/xml");
       return ok(twiml.toXML());
    }
-   
+
    public static Result fizzbuzz(String digits) {
-      if (!(new RequestVerifier().verifyRequest(request()))) {
-         Logger.debug("not authorized");
+      if (isUnauthorized()) {
          return unauthorized();
       }
-      
 
       TwiMLResponse twiml = new TwiMLResponse();
 
       try {
-         Say say = new Say("You entered the digits " + digits);
+         FizzBuzzGame game = new FizzBuzzGame();
+         Say say = new Say(game.play(digits));
          twiml.append(say);
-
       } catch (TwiMLException e) {
-         e.printStackTrace();
+         Logger.error("Unable to create TWIML response", e);
+         return internalServerError();
       }
 
       response().setContentType("application/xml");
@@ -61,5 +61,9 @@ public class Application extends Controller {
       
    }
 
+   private static boolean isUnauthorized() {
+      return !(new RequestVerifier().verifyRequest(request()));
+   }
+   
 
 }

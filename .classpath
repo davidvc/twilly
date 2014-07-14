@@ -76,7 +76,7 @@
 	<classpathentry kind="lib" path="/Users/dvancouvering/.ivy2/cache/org.scalaz/scalaz-effect_2.11/bundles/scalaz-effect_2.11-7.0.6.jar"/>
 	<classpathentry kind="lib" path="/Users/dvancouvering/.ivy2/cache/org.specs2/specs2-junit_2.11/jars/specs2-junit_2.11-2.3.12.jar"/>
 	<classpathentry kind="lib" path="/Users/dvancouvering/.ivy2/cache/org.specs2/specs2-mock_2.11/jars/specs2-mock_2.11-2.3.12.jar"/>
-	<classpathentry kind="lib" path="/Users/dvancouvering/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-1.9.5.jar"/>
+	<classpathentry kind="lib" path="/Users/dvancouvering/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-1.9.5.jar" sourcepath="/Users/dvancouvering/.m2/repository/org/mockito/mockito-core/1.9.5/mockito-core-1.9.5-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/dvancouvering/.ivy2/cache/org.objenesis/objenesis/jars/objenesis-1.0.jar"/>
 	<classpathentry kind="lib" path="/Users/dvancouvering/.ivy2/cache/org.specs2/specs2-matcher-extra_2.11/jars/specs2-matcher-extra_2.11-2.3.12.jar"/>
 	<classpathentry kind="lib" path="/Users/dvancouvering/.ivy2/cache/org.specs2/specs2-analysis_2.11/jars/specs2-analysis_2.11-2.3.12.jar"/>

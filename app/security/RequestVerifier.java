@@ -27,6 +27,12 @@ public class RequestVerifier {
       Logger.debug("URI is " + fullURI);
       
       // Not currently supporting POST params...
-      return twilioUtils.validateRequest(signature, fullURI, null);
+      boolean result = twilioUtils.validateRequest(signature, fullURI, null);
+      
+      if (!result) {
+         Logger.debug("not authorized");
+      }
+      
+      return result;
    }
 }

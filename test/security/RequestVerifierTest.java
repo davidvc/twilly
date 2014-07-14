@@ -8,17 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import play.mvc.Http.Request;
+import play.mvc.Http;
 
 import com.twilio.sdk.TwilioUtils;
-
-import controllers.routes;
 
 public class RequestVerifierTest {
    private RequestVerifier underTest;
 
    @Mock TwilioUtils twilioUtils;
-   @Mock Request request;
+   @Mock Http.Request request;
    
    @Before
    public void setup() {
@@ -28,15 +26,17 @@ public class RequestVerifierTest {
 
    @Test
    public void verifiesRequest() {
+      String host = "host";
       String uri = "this/is/the/uri/";
-      String params = ""
       String signature = "signature";
 
       when(request.getHeader("X-Twilio-Signature")).thenReturn(signature);
+      when(request.host()).thenReturn(host);
+      when(request.uri()).thenReturn(uri);
       
-      when(twilioUtils.validateRequest(signature, uri, null)).thenReturn(true);
+      when(twilioUtils.validateRequest(signature, "https://" + host + uri, null)).thenReturn(true);
       
-      assertTrue(underTest.verifyRequest(request, uri));
+      assertTrue(underTest.verifyRequest(request));
    }
    
 
