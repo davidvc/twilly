@@ -16,9 +16,16 @@ public class RequestVerifier {
    public RequestVerifier(TwilioUtils twilioUtils) {
       this.twilioUtils = twilioUtils;
    }
-   public boolean verifyRequest(Request request, String uri) {
+   public boolean verifyRequest(Request request, String fullPath) {
       String signature = request.getHeader("X-Twilio-Signature");
-      String fullURI = uri + request.uri();
+      
+      // Strip off the last slash in the uri
+      fullPath = fullPath.substring(0, fullPath.length() - 1);
+      
+      // Strip off the first slash from the uri
+      String uri = request.uri().substring(1, fullPath.length());
+      String fullURI = fullPath + uri;
+
       Logger.debug("Signature is " + signature);
       Logger.debug("URI is " + fullURI);
       
