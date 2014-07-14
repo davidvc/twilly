@@ -21,8 +21,15 @@ public class RequestVerifier {
       
       // Strip off the first slash from the uri
       // Yes, hardcoded, but 
-      String fullURI = "https://" + request.host() + request.uri();
-      fullURI = fullURI.substring(0, fullURI.length() - 1);
+
+      String uri = request.uri();
+      uri = uri.substring(1, uri.length());
+
+      Logger.debug("request host is " + request.host());
+      Logger.debug("uri is " + uri);
+
+      String fullURI = "https://" + request.host() + uri;
+      //fullURI = fullURI.substring(0, fullURI.length() - 1);
 
       Logger.debug("Signature is " + signature);
       Logger.debug("URI is " + fullURI);
