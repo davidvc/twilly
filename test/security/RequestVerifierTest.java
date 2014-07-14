@@ -12,6 +12,8 @@ import play.mvc.Http.Request;
 
 import com.twilio.sdk.TwilioUtils;
 
+import controllers.routes;
+
 public class RequestVerifierTest {
    private RequestVerifier underTest;
 
@@ -28,12 +30,12 @@ public class RequestVerifierTest {
    public void verifiesRequest() {
       String uri = "this/is/the/uri";
       String signature = "signature";
-      when(request.uri()).thenReturn(uri);
+
       when(request.getHeader("X-Twilio-Signature")).thenReturn(signature);
       
       when(twilioUtils.validateRequest(signature, uri, null)).thenReturn(true);
       
-      assertTrue(underTest.verifyRequest(request));
+      assertTrue(underTest.verifyRequest(request, uri));
    }
    
 

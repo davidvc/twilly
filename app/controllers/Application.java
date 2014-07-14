@@ -14,7 +14,7 @@ public class Application extends Controller {
 
    public static Result index() {
       Logger.debug("verifying request");
-      if (!(new RequestVerifier().verifyRequest(request()))) {
+      if (!(new RequestVerifier().verifyRequest(request(), routes.Application.index().absoluteURL(request())))) {
          Logger.debug("unauthorized");
          return unauthorized();
       }
@@ -38,5 +38,28 @@ public class Application extends Controller {
       response().setContentType("application/xml");
       return ok(twiml.toXML());
    }
+   
+   public static Result fizzbuzz(String digits) {
+      if (!(new RequestVerifier().verifyRequest(request(), routes.Application.fizzbuzz(digits).absoluteURL(request())))) {
+         Logger.debug("not authorized");
+         return unauthorized();
+      }
+      
+
+      TwiMLResponse twiml = new TwiMLResponse();
+
+      try {
+         Say say = new Say("You entered the digits " + digits);
+         twiml.append(say);
+
+      } catch (TwiMLException e) {
+         e.printStackTrace();
+      }
+
+      response().setContentType("application/xml");
+      return ok(twiml.toXML());
+      
+   }
+
 
 }
